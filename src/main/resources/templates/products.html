@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUYSELL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1, h3, h4 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        hr {
+            border: 1px solid #4CAF50;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .products {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+
+        .products p {
+            margin: 0;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .products p:last-child {
+            border-bottom: none;
+        }
+
+        .products p a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .products p a:hover {
+            text-decoration: underline;
+        }
+
+        .no-products {
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>BUY</h1>
+<hr>
+
+<h4>Товары Олеси</h4>
+<form action="/" method="get">
+    <label for="title">Поиск по названию объявления:</label>
+    <input type="text" id="titleOne" name="title" placeholder="Введите название..." />
+    <input type="submit" value="Поиск" />
+</form>
+
+<!-- Проверка наличия товаров -->
+<div class="products" th:if="${#lists.isEmpty(products)}">
+    <p class="no-products">Товары отсутствуют.</p>
+</div>
+
+<div class="products" th:unless="${#lists.isEmpty(products)}">
+    <div th:each="product : ${products}">
+        <p>
+            <b th:text="${product.title}"></b> -
+            <span th:text="${product.price}"></span> руб |
+            <a th:href="@{/product/{id}(id=${product.id})}">Подробнее..</a>
+        </p>
+    </div>
+</div>
+
+<hr>
+
+<h3>Создать новый товар</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+
+    <label for="title">Название объявления:</label>
+    <input type="text" id="title" name="title" placeholder="Введите название..." required/>
+
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description" placeholder="Введите описание..." required/>
+
+    <label for="price">Цена:</label>
+    <input type="number" id="price" name="price" placeholder="Введите цену..." required/>
+
+    <label for="city">Город:</label>
+    <input type="text" id="city" name="city" placeholder="Введите город..." required/>
+
+    <label for="author">Автор (его имя):</label>
+    <input type="text" id="author" name="author" placeholder="Введите имя автора..." required/>
+
+    <label for="image">Изображение:</label>
+    <input type="file" id="image" name="image" accept="image/*"/>
+
+    <input type="submit" value="Добавить товар" />
+</form>
+</body>
+</html>
