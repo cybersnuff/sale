@@ -45,7 +45,6 @@ class ProductController(
     ): String {
         val imageBytes = image?.bytes?.let { convertImageToByteArray(it) }
 
-        // Создаем объект Product
         val product = Product(
             title = title,
             description = description,
