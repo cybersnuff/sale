@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обратная связь</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #acb6e5, #74ebd5);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="/feedback" method="post">
+    <h1>Оставить отзыв</h1>
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="contact">Контакт:</label>
+    <input type="text" id="contact" name="contact" required>
+
+    <label for="message">Сообщение:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Отправить</button>
+</form>
+</body>
+</html>
