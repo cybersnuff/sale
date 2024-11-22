@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 @RequestMapping("/feedback")
-class FeedbackController(private val telegramService: TelegramService) {
-
+class FeedbackController(
+    private val telegramService: TelegramService
+) {
 
     @GetMapping
     fun showFeedbackForm(): String {
@@ -26,10 +27,10 @@ class FeedbackController(private val telegramService: TelegramService) {
     }
 }
 
-
-
 data class Feedback(
     val name: String,
     val contact: String,
     val message: String
 )
+
+//это тест
