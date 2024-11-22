@@ -32,5 +32,3 @@ data class Feedback(
     val contact: String,
     val message: String
 )
-
-//это тест
