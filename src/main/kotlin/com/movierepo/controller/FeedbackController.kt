@@ -23,7 +23,12 @@ class FeedbackController(
     fun submitFeedback(@ModelAttribute feedback: Feedback, model: Model): String {
         telegramService.sendMessage(feedback)
         model.addAttribute("message", "Ваше сообщение успешно отправлено!")
-        return "feedbackForm"
+        return "confirmation"
+    }
+
+    @GetMapping("/all")
+    fun showProducts(): String {
+        return "all"
     }
 }
 

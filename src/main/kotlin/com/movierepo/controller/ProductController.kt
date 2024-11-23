@@ -59,13 +59,11 @@ class ProductController(
         return "redirect:/"
     }
 
-
     @DeleteMapping("/products/delete/{id}")
     fun delete(@PathVariable id: Long): ResponseEntity<Void> {
         productService.delete(id)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
-
 
     @GetMapping("/product/all")
     @Transactional
